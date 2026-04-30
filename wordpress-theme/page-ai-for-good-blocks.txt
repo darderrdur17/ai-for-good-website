@@ -1,0 +1,903 @@
+AI FOR GOOD — WORDPRESS (KADENCE) PAGE CONTENT
+Paste-ready block markup for WordPress Code Editor (Gutenberg).
+
+HOW TO USE (IMPORTANT)
+1) Open the AI for Good page in WordPress → click Edit.
+2) Open the ⋮ menu (top-right) → select “Code editor”.
+3) Select all (Cmd/Ctrl + A) and delete everything in the editor.
+4) Paste EVERYTHING from the next line (starting at <!-- wp:html -->) to the end of this file.
+5) Exit Code editor back to Visual editor.
+6) Scroll and confirm layout on desktop/tablet/mobile preview.
+7) Click Update.
+
+NOTES
+- This does NOT change the site theme and does NOT require admin/theme access.
+- All styling is scoped under .afg-page so it only affects this page content.
+- The accordion uses Kadence’s native accordion block (no JS needed).
+- The program tabs use a tiny inline script inside this page only.
+
+<!-- wp:html -->
+<div class="afg-page" id="afg-page">
+  <style>
+    /* ============================================================
+       AI for Good — Page-scoped styles (Kadence-safe)
+       Everything is scoped under .afg-page to avoid affecting other pages.
+       ============================================================ */
+    .afg-page{
+      --afg-primary:#E05D24;
+      --afg-primaryHover:#C24D18;
+      --afg-accent:#B83808;
+      --afg-bg:#ffffff;
+      --afg-card:#ffffff;
+      --afg-soft:#f7f7f8;
+      --afg-muted:#5b5b5b;
+      --afg-border:rgba(0,0,0,.10);
+      --afg-shadow:0 10px 30px rgba(0,0,0,.06);
+      --afg-radius:18px;
+      --afg-radiusSm:12px;
+      color:#1a1a1a;
+      line-height:1.6;
+    }
+
+    /* Keep spacing consistent with Kadence containers */
+    .afg-section{ padding: clamp(44px, 6vw, 96px) 0; }
+    .afg-wrap{ max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .afg-center{ text-align:center; }
+
+    .afg-badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(224,93,36,.10);
+      border: 1px solid rgba(224,93,36,.20);
+      color: var(--afg-primary);
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .afg-badgeDot{ width: 8px; height: 8px; border-radius:999px; background: var(--afg-primary); box-shadow:0 0 0 4px rgba(224,93,36,.15); }
+
+    .afg-h1{
+      font-size: clamp(34px, 4.7vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+      font-weight: 800;
+    }
+    .afg-h1 span{ color: var(--afg-primary); }
+    .afg-lede{
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--afg-muted);
+      margin: 0 auto 28px;
+      max-width: 860px;
+    }
+
+    .afg-ctaRow{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 0 0 30px; }
+    .afg-btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700; font-size: 15px;
+      text-decoration:none !important;
+      transition: transform .15s ease, background-color .15s ease, border-color .15s ease, color .15s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .afg-btnPrimary{ background: var(--afg-primary); color:#fff; }
+    .afg-btnPrimary:hover{ background: var(--afg-primaryHover); transform: translateY(-1px); }
+    .afg-btnGhost{ background: transparent; color:#1a1a1a; border-color: rgba(0,0,0,.14); }
+    .afg-btnGhost:hover{ border-color: rgba(224,93,36,.45); color: var(--afg-primary); transform: translateY(-1px); }
+
+    .afg-grid{ display:grid; gap:16px; }
+    .afg-grid3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .afg-grid4{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1024px){
+      .afg-grid3{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .afg-grid4{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px){
+      .afg-grid3,.afg-grid4{ grid-template-columns: 1fr; }
+    }
+
+    .afg-card{
+      background: var(--afg-card);
+      border: 1px solid var(--afg-border);
+      border-radius: var(--afg-radius);
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+      padding: 18px;
+    }
+    .afg-card:hover{ box-shadow: var(--afg-shadow); border-color: rgba(224,93,36,.25); }
+
+    .afg-stat{
+      text-align:center;
+      padding: 18px 14px;
+    }
+    .afg-statN{ font-size: 28px; font-weight: 900; color:#111; }
+    .afg-statL{ font-size: 13px; color: var(--afg-muted); margin-top: 4px; }
+
+    .afg-subhead{
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+      font-weight: 800;
+    }
+    .afg-copy{ color: var(--afg-muted); font-size: 16px; margin: 0; }
+    .afg-copy + .afg-copy{ margin-top: 12px; }
+
+    /* Theory of Change */
+    .afg-toc{ display:grid; gap:12px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    @media (max-width: 1024px){ .afg-toc{ grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 640px){ .afg-toc{ grid-template-columns: 1fr; } }
+    .afg-tocItem{ padding:14px; border-radius:16px; border:1px solid rgba(0,0,0,.10); background: rgba(224,93,36,.06); }
+    .afg-tocK{ display:flex; align-items:center; gap:10px; margin-bottom: 8px; }
+    .afg-step{ width:26px; height:26px; border-radius:999px; background: rgba(0,0,0,.06); display:flex; align-items:center; justify-content:center; font-weight: 800; font-size: 12px; }
+    .afg-tocT{ font-weight: 800; font-size: 13px; margin:0; }
+    .afg-tocP{ margin:0; font-size: 12.5px; color: var(--afg-muted); line-height: 1.45; }
+
+    /* Programs Tabs */
+    .afg-tabs{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin: 20px 0 16px; }
+    .afg-tabBtn{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 2px solid rgba(0,0,0,.12);
+      background: transparent;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      transition: transform .15s ease, background-color .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .afg-tabBtn:hover{ transform: translateY(-1px); border-color: rgba(224,93,36,.28); color: var(--afg-primary); }
+    .afg-tabBtn[aria-selected="true"]{ background: var(--afg-primary); border-color: var(--afg-primary); color:#fff; }
+
+    .afg-panel{ display:none; }
+    .afg-panel.isActive{ display:block; }
+    .afg-panelInner{ padding: 22px; }
+    .afg-panelGrid{ display:grid; gap:18px; grid-template-columns: 2fr 1fr; }
+    @media (max-width: 1024px){ .afg-panelGrid{ grid-template-columns: 1fr; } }
+
+    .afg-kv{ background: rgba(224,93,36,.06); border: 1px solid rgba(0,0,0,.10); border-radius: 16px; padding: 14px; }
+    .afg-kvT{ font-weight: 900; font-size: 13px; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+    .afg-pillRow{ display:flex; flex-wrap:wrap; gap:8px; }
+    .afg-pill{ font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(0,0,0,.10); background:#fff; color: #444; }
+
+    .afg-hi{ display:flex; gap:12px; align-items:flex-start; }
+    .afg-hiN{ width:24px; height:24px; border-radius:999px; background: rgba(224,93,36,.12); color: var(--afg-primary); display:flex; align-items:center; justify-content:center; font-weight: 900; font-size: 12px; flex:0 0 auto; margin-top: 2px; }
+    .afg-quote{ margin-top: 14px; padding: 14px; border-radius: 16px; border: 1px solid rgba(0,0,0,.10); background: rgba(224,93,36,.05); }
+    .afg-quote p{ margin: 0; color: var(--afg-muted); font-style: italic; font-size: 14px; }
+
+    /* Partner grid */
+    .afg-partners{ display:grid; gap:12px; grid-template-columns: repeat(6, minmax(0,1fr)); }
+    @media (max-width: 1024px){ .afg-partners{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+    @media (max-width: 640px){ .afg-partners{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .afg-partner{
+      text-align:center; padding: 14px 10px; border-radius: 16px;
+      background: rgba(0,0,0,.02); border: 1px solid rgba(0,0,0,.08);
+    }
+    .afg-initials{
+      width: 40px; height: 40px; margin: 0 auto 10px;
+      border-radius: 12px; background: rgba(224,93,36,.12);
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 900; color: var(--afg-primary);
+      font-size: 13px;
+    }
+    .afg-partnerName{ margin:0; font-size: 13px; font-weight: 800; color:#222; line-height:1.25; }
+
+    /* Helpers */
+    .afg-soft{ background: var(--afg-soft); }
+    .afg-mt24{ margin-top: 24px; }
+    .afg-mt40{ margin-top: 40px; }
+    .afg-mb16{ margin-bottom: 16px; }
+    .afg-max780{ max-width: 780px; margin-left:auto; margin-right:auto; }
+  </style>
+
+  <script>
+    (function(){
+      function initTabs(){
+        var root = document.getElementById('afg-page');
+        if(!root) return;
+        var tablist = root.querySelector('.afg-tabs');
+        if(!tablist) return;
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('.afg-tabBtn'));
+        var panels = Array.prototype.slice.call(root.querySelectorAll('.afg-panel'));
+        if(!tabs.length || !panels.length) return;
+
+        function activate(tab){
+          tabs.forEach(function(t){
+            t.setAttribute('aria-selected','false');
+            t.classList.remove('isActive');
+            t.tabIndex = -1;
+          });
+          panels.forEach(function(p){ p.classList.remove('isActive'); });
+          tab.setAttribute('aria-selected','true');
+          tab.tabIndex = 0;
+          var target = tab.getAttribute('data-target');
+          var panel = root.querySelector('#' + CSS.escape(target));
+          if(panel) panel.classList.add('isActive');
+        }
+
+        tabs.forEach(function(tab){
+          tab.addEventListener('click', function(){ activate(tab); });
+          tab.addEventListener('keydown', function(e){
+            var idx = tabs.indexOf(tab);
+            if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+              e.preventDefault();
+              var next = tabs[(idx+1) % tabs.length];
+              next.focus();
+              activate(next);
+            }
+            if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+              e.preventDefault();
+              var prev = tabs[(idx-1+tabs.length) % tabs.length];
+              prev.focus();
+              activate(prev);
+            }
+            if(e.key === 'Home'){ e.preventDefault(); tabs[0].focus(); activate(tabs[0]); }
+            if(e.key === 'End'){ e.preventDefault(); tabs[tabs.length-1].focus(); activate(tabs[tabs.length-1]); }
+          });
+        });
+
+        // Ensure first is active
+        activate(tabs[0]);
+      }
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', initTabs);
+      } else {
+        initTabs();
+      }
+    })();
+  </script>
+</div>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     HERO IMAGES (Kadence) — keep as provided
+     ============================================================ -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_20092c-17","columns":1,"collapseGutter":"none","customRowGutter":[0,"",""],"colLayout":"equal","maxWidth":1200,"align":"center","vsmobile":true,"padding":["","","",""],"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_facb00-71","justifyContent":["center","",""],"kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_facb00-71"><div class="kt-inside-inner-col"><!-- wp:kadence/image {"id":18036,"sizeSlug":"large","linkDestination":"none","uniqueID":"17961_2e9412-56"} -->
+<figure class="wp-block-kadence-image kb-image17961_2e9412-56 size-large"><img src="https://aisingapore.org/wp-content/uploads/2025/12/ai-for-good-1920-x-720-px-1024x384.webp" alt="" class="kb-img wp-image-18036"/></figure>
+<!-- /wp:kadence/image --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_5624ce-2d","columns":1,"collapseGutter":"none","customRowGutter":[0,"",""],"colLayout":"equal","align":"center","vsdesk":true,"vstablet":true,"padding":["","","",""],"kbVersion":2,"metadata":{"name":"Row Layout (Mobile)"}} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_fc3054-04","justifyContent":["center","",""],"kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_fc3054-04"><div class="kt-inside-inner-col"><!-- wp:kadence/image {"id":980619,"linkDestination":"none","uniqueID":"17961_4f4152-d9"} -->
+<figure class="wp-block-kadence-image kb-image17961_4f4152-d9"><img src="https://aisingapore.org/wp-content/uploads/2025/12/ai-for-good-600-x-600-px.jpg" alt="" class="kb-img wp-image-980619"/></figure>
+<!-- /wp:kadence/image --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- wp:html -->
+<section class="afg-section" aria-labelledby="afg-heroTitle">
+  <div class="afg-wrap afg-center">
+    <div class="afg-badge"><span class="afg-badgeDot" aria-hidden="true"></span>AI Singapore Initiative</div>
+    <h1 class="afg-h1" id="afg-heroTitle">Scaling Inclusive AI<br><span>from Singapore to the World</span></h1>
+    <p class="afg-lede">AI Singapore advances AI for Good by turning AI education into scalable social impact across Southeast Asia and beyond.</p>
+    <div class="afg-ctaRow">
+      <a class="afg-btn afg-btnPrimary" href="#programs">Explore Programs</a>
+      <a class="afg-btn afg-btnGhost" href="#contact">Partner With Us</a>
+    </div>
+    <div class="afg-grid afg-grid3" aria-label="Key statistics">
+      <div class="afg-card afg-stat">
+        <div class="afg-statN">100,000+</div>
+        <div class="afg-statL">Learners Reached</div>
+      </div>
+      <div class="afg-card afg-stat">
+        <div class="afg-statN">15+</div>
+        <div class="afg-statL">Countries</div>
+      </div>
+      <div class="afg-card afg-stat">
+        <div class="afg-statN">200+</div>
+        <div class="afg-statL">Master Trainers</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     OUR MISSION (Kadence) — keep as provided
+     ============================================================ -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_6a0cda-2f","columns":1,"colLayout":"equal","maxWidth":1000,"padding":["lg","","sm",""],"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_c37303-28","kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_c37303-28"><div class="kt-inside-inner-col"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Our Mission</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>AI for Good is a branch of initiatives under LearnAI, focusing on outreach initiatives to underprivileged communities. This initiative seeks to bridge the digital divide by making AI resources, tools and knowledge accessible to those who may otherwise lack opportunities, creating meaningful and positive impact.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kadence/advancedgallery {"uniqueID":"17961_bf989e-a6","ids":[980622,980623,980624],"imagesDynamic":[{"id":980622,"link":"https://aisingapore.org/ai-for-good-2/aiforgood1/","alt":"","url":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood1.jpg","customLink":"","linkTarget":"","linkSponsored":"","thumbUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood1.jpg","lightUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood1.jpg","width":600,"height":450},{"id":980623,"link":"https://aisingapore.org/ai-for-good-2/aiforgood2/","alt":"","url":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood2.jpg","customLink":"","linkTarget":"","linkSponsored":"","thumbUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood2.jpg","lightUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood2.jpg","width":600,"height":450},{"id":980624,"link":"https://aisingapore.org/ai-for-good-2/aiforgood3/","alt":"","url":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood3.jpg","customLink":"","linkTarget":"","linkSponsored":"","thumbUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood3.jpg","lightUrl":"https://aisingapore.org/wp-content/uploads/2025/12/aiforgood3.jpg","width":600,"height":450}],"kbVersion":2} /--></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- ============================================================
+     AI ERA (wp:html)
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" aria-labelledby="afg-aiEra">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">The Challenge</div>
+      <h2 class="afg-subhead" id="afg-aiEra">The AI Era is Here — Are We Ready?</h2>
+      <p class="afg-copy afg-max780">AI is rapidly reshaping how societies learn, work, and participate in the global economy. Without deliberate action, AI will widen inequality — leaving behind youth, workers, educators, and underserved communities.</p>
+    </div>
+
+    <div class="afg-grid afg-grid3 afg-mt40">
+      <div class="afg-card">
+        <h3 style="margin:0 0 6px;font-weight:900;">Learn</h3>
+        <p class="afg-copy" style="margin:0 0 10px;font-weight:700;color:#333;">AI is reshaping how we learn</p>
+        <p class="afg-copy">AI is redefining how knowledge is created, accessed, and applied. We are moving from tools to intelligent collaborators.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 6px;font-weight:900;">Work</h3>
+        <p class="afg-copy" style="margin:0 0 10px;font-weight:700;color:#333;">AI is reshaping jobs</p>
+        <p class="afg-copy">Automation is reshaping jobs, skills, and economic participation. AI is no longer optional — it defines how we work and live.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 6px;font-weight:900;">Global</h3>
+        <p class="afg-copy" style="margin:0 0 10px;font-weight:700;color:#333;">AI is reshaping access</p>
+        <p class="afg-copy">Without intervention, the AI divide will exclude underserved communities from opportunities in the global digital economy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     PILLARS (wp:html)
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section afg-soft" id="pillars" aria-labelledby="afg-pillars">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Our Focus</div>
+      <h2 class="afg-subhead" id="afg-pillars">AI Singapore Pillars</h2>
+      <p class="afg-copy afg-max780">Support Singapore’s vision to be a leader in developing scalable, impactful AI solutions strategic to the nation and beyond.</p>
+    </div>
+
+    <div class="afg-grid afg-grid3 afg-mt40">
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Research</h3>
+        <p class="afg-copy">Sustain investments in fundamental AI research to ensure Singapore’s relevance in the global AI race.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>Build Strategic Capabilities</li>
+          <li>Retain and Nurture Local Talent</li>
+          <li>Preposition SG for Future Applications</li>
+        </ul>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Technology</h3>
+        <p class="afg-copy">Support applied AI research projects aligned to the National AI Strategy.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>AI Solutions with High Social and Economic Impacts</li>
+          <li>Sector-wide or National Scale Challenges</li>
+        </ul>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Innovation</h3>
+        <p class="afg-copy">Catalyse and support more widespread industry adoption of AI.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>AI Adoption in Industry through Talent and Projects</li>
+          <li>AI Standards</li>
+          <li>Industry Consortia</li>
+        </ul>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Governance</h3>
+        <p class="afg-copy">Establish Singapore as a leading hub for responsible and trusted AI.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>Fairness, Accountability and Transparency</li>
+          <li>Privacy and Ethics</li>
+          <li>Risk and Mitigations</li>
+        </ul>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Products</h3>
+        <p class="afg-copy">Build catalytic AI products/solutions to enrich Singapore’s AI ecosystem.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>Project SEA-LION</li>
+          <li>Large Language Models</li>
+          <li>Multilingual Capabilities &amp; Multimodality</li>
+        </ul>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Talent Development</h3>
+        <p class="afg-copy">Nurture and empower the next generation of AI bilinguals.</p>
+        <ul style="margin:12px 0 0;padding-left:18px;color:var(--afg-muted);">
+          <li>AI Capacity Building for Organisations</li>
+          <li>AI Education for Students &amp; Educators</li>
+          <li>AI for Good Initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     THEORY OF CHANGE (wp:html)
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" aria-labelledby="afg-toc">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Our Approach</div>
+      <h2 class="afg-subhead" id="afg-toc">AI for Good — Theory of Change</h2>
+      <p class="afg-copy afg-max780">Our systematic approach to creating lasting impact through inclusive AI education and capacity building.</p>
+    </div>
+
+    <div class="afg-toc afg-mt40" role="list" aria-label="Theory of change stages">
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">1</span><p class="afg-tocT">Problem / Need</p></div>
+        <p class="afg-tocP">Uneven access to AI capabilities, with varying levels of readiness across communities, sectors, and markets.</p>
+      </div>
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">2</span><p class="afg-tocT">Inputs</p></div>
+        <p class="afg-tocP">Cross-sector partnerships, funding &amp; resources, AI expertise, platforms, tools, and networks.</p>
+      </div>
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">3</span><p class="afg-tocT">Activities</p></div>
+        <p class="afg-tocP">A portfolio of initiatives across education, workforce development, community programmes, and ecosystem &amp; policy engagement.</p>
+      </div>
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">4</span><p class="afg-tocT">Outputs</p></div>
+        <p class="afg-tocP">Programmes delivered across markets; trainers and facilitators enabled; learners and communities reached at scale.</p>
+      </div>
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">5</span><p class="afg-tocT">Outcomes</p></div>
+        <p class="afg-tocP">AI literacy and practical application; employability and productivity; responsible and safe engagement with AI.</p>
+      </div>
+      <div class="afg-tocItem" role="listitem">
+        <div class="afg-tocK"><span class="afg-step">6</span><p class="afg-tocT">Impact</p></div>
+        <p class="afg-tocP">Inclusive participation in the AI-enabled economy; expanded access to opportunities; future-ready workforce and communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     OUR GOALS (Kadence) — keep as provided
+     ============================================================ -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_7992b0-22","columns":1,"colLayout":"equal","padding":["sm","","xs",""],"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_256a7f-15","kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_256a7f-15"><div class="kt-inside-inner-col"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Our Goals</h2>
+<!-- /wp:heading -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_edafa8-2a","columns":1,"colLayout":"equal","maxWidth":1000,"padding":[0,"","sm",""],"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_218277-51","kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_218277-51"><div class="kt-inside-inner-col"><!-- wp:kadence/accordion {"uniqueID":"17961_115a34-e8","paneCount":3,"contentBorderStyle":[{"top":["palette6","",1],"right":["palette6","",1],"bottom":["palette6","",1],"left":["palette6","",1],"unit":"px"}],"titleStyles":[{"size":["","",""],"sizeType":"px","lineHeight":["","",""],"lineType":"","letterSpacing":"","family":"","google":"","style":"","weight":"","variant":"","subset":"","loadGoogle":true,"padding":[10,14,10,14],"marginTop":0,"color":"#555555","background":"#f2f2f2","border":["","","",""],"borderRadius":["","","",""],"borderWidth":["","","",""],"colorHover":"#444444","backgroundHover":"#eeeeee","borderHover":["","","",""],"colorActive":"#ffffff","backgroundActive":"#444444","borderActive":["","","",""],"textTransform":""}],"titleBorder":[{"top":["palette6","",0],"right":["palette6","",0],"bottom":["palette6","",0],"left":["palette6","",0],"unit":"px"}],"titleBorderHover":[{"top":["#eeeeee","",""],"right":["#eeeeee","",""],"bottom":["#eeeeee","",""],"left":["#eeeeee","",""],"unit":"px"}],"titleBorderActive":[{"top":["#444444","",""],"right":["#444444","",""],"bottom":["#444444","",""],"left":["#444444","",""],"unit":"px"}],"titleBorderRadius":[0,0,0,0]} -->
+<div class="wp-block-kadence-accordion alignnone"><div class="kt-accordion-wrap kt-accordion-id17961_115a34-e8 kt-accordion-has-3-panes kt-active-pane-0 kt-accordion-block kt-pane-header-alignment-left kt-accodion-icon-style-basic kt-accodion-icon-side-right" style="max-width:none"><div class="kt-accordion-inner-wrap" data-allow-multiple-open="false" data-start-open="0"><!-- wp:kadence/pane {"uniqueID":"17961_283204-98"} -->
+<div class="wp-block-kadence-pane kt-accordion-pane kt-accordion-pane-1 kt-pane17961_283204-98"><div class="kt-accordion-header-wrap"><button class="kt-blocks-accordion-header kt-acccordion-button-label-show" type="button"><span class="kt-blocks-accordion-title-wrap"><span class="kt-blocks-accordion-title"><strong>United Nations Sustainable Development Goals</strong></span></span><span class="kt-blocks-accordion-icon-trigger"></span></button></div><div class="kt-accordion-panel"><div class="kt-accordion-panel-inner"><!-- wp:kadence/advancedheading {"uniqueID":"17961_86c562-b4","markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"htmlTag":"p","borderStyle":[{"top":["palette9","",1],"right":["palette9","",1],"bottom":["palette9","",1],"left":["palette9","",1],"unit":"px"}]} -->
+<p class="kt-adv-heading17961_86c562-b4 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_86c562-b4">SDG 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.<br><br>With AI for Good, we aim to align ourselves with SDG4 by empowering communities, reducing inequality, and driving progress across other SDGs as we believe that education underpins other goals.</p>
+<!-- /wp:kadence/advancedheading --></div></div></div>
+<!-- /wp:kadence/pane -->
+
+<!-- wp:kadence/pane {"id":2,"uniqueID":"17961_5d521d-41"} -->
+<div class="wp-block-kadence-pane kt-accordion-pane kt-accordion-pane-2 kt-pane17961_5d521d-41"><div class="kt-accordion-header-wrap"><button class="kt-blocks-accordion-header kt-acccordion-button-label-show" type="button"><span class="kt-blocks-accordion-title-wrap"><span class="kt-blocks-accordion-title">Foster Collaboration</span></span><span class="kt-blocks-accordion-icon-trigger"></span></button></div><div class="kt-accordion-panel"><div class="kt-accordion-panel-inner"><!-- wp:kadence/advancedheading {"uniqueID":"17961_c3d8cc-0e","markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"htmlTag":"p"} -->
+<p class="kt-adv-heading17961_c3d8cc-0e wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_c3d8cc-0e">Collaboration is key to ensuring the widespread adoption and implementation of AI-driven solutions that address community-specific challenges. By partnering with governments, academic institutions, non-profits, and private sector organizations, we hope to create strengthened community networks through shared resources and expertise.</p>
+<!-- /wp:kadence/advancedheading --></div></div></div>
+<!-- /wp:kadence/pane -->
+
+<!-- wp:kadence/pane {"id":3,"uniqueID":"17961_f541e3-4d"} -->
+<div class="wp-block-kadence-pane kt-accordion-pane kt-accordion-pane-3 kt-pane17961_f541e3-4d"><div class="kt-accordion-header-wrap"><button class="kt-blocks-accordion-header kt-acccordion-button-label-show" type="button"><span class="kt-blocks-accordion-title-wrap"><span class="kt-blocks-accordion-title">Upskill Communities</span></span><span class="kt-blocks-accordion-icon-trigger"></span></button></div><div class="kt-accordion-panel"><div class="kt-accordion-panel-inner"><!-- wp:kadence/advancedheading {"uniqueID":"17961_127cf0-69","markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"htmlTag":"p"} -->
+<p class="kt-adv-heading17961_127cf0-69 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_127cf0-69">AI for Good aims to provide hands-on training programs to equip individuals with the practical skills needed for future-proof careers, enabling them to actively participate in and contribute to a tech-driven economy.</p>
+<!-- /wp:kadence/advancedheading --></div></div></div>
+<!-- /wp:kadence/pane --></div></div></div>
+<!-- /wp:kadence/accordion --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- ============================================================
+     SDG CARDS (wp:html) — complements the accordion
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" aria-labelledby="afg-sdgCards">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">UN Sustainable Development Goals</div>
+      <h2 class="afg-subhead" id="afg-sdgCards">Advancing SDG 4 in the AI Era</h2>
+      <p class="afg-copy afg-max780">Driving inclusive, equitable AI education — aligned to UN SDG 4: Quality Education.</p>
+    </div>
+
+    <div class="afg-grid afg-grid3 afg-mt40">
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">AI Literacy for All</h3>
+        <p class="afg-copy">Equip learners with core AI skills for life &amp; employability.</p>
+        <p class="afg-copy" style="margin-top:12px;"><strong style="color:var(--afg-primary);">SDG 4.1 | 4.4</strong> — Skills for employment and livelihoods</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Empowering Educators</h3>
+        <p class="afg-copy">Enable educators to integrate AI into learning systems.</p>
+        <p class="afg-copy" style="margin-top:12px;"><strong style="color:var(--afg-primary);">SDG 4.6 | 4.c</strong> — Scale teacher capacity and AI diffusion</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Inclusive Access</h3>
+        <p class="afg-copy">Expand AI learning to underserved &amp; under-represented communities.</p>
+        <p class="afg-copy" style="margin-top:12px;"><strong style="color:var(--afg-primary);">SDG 4.5</strong> — Reduce disparities and ensure equitable access</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Responsible AI &amp; Governance</h3>
+        <p class="afg-copy">Promote safe, trustworthy, and human-centric AI use.</p>
+        <p class="afg-copy" style="margin-top:12px;"><strong style="color:var(--afg-primary);">SDG 4.7</strong> — Support sustainable development and citizenship</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Sustainable Ecosystem Building</h3>
+        <p class="afg-copy">Strengthen institutions and partnerships to scale AI for Good sustainably.</p>
+        <p class="afg-copy" style="margin-top:12px;"><strong style="color:var(--afg-primary);">SDG 4.b</strong> — Expand global capacity-building effort</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     GLOBAL REACH (wp:html)
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" id="impact" aria-labelledby="afg-impact">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Our Reach</div>
+      <h2 class="afg-subhead" id="afg-impact">Global Reach and Impact</h2>
+      <p class="afg-copy afg-max780">AI Singapore advances AI for Good by turning AI education into scalable social impact across Southeast Asia and beyond.</p>
+    </div>
+
+    <div class="afg-card afg-mt40" style="overflow:hidden;">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/map-na1yxIk8a3BtlzDr3ijyuGTKUE00FC.png" alt="World map showing AI for Good global reach - Southeast Asia, South Asia, Caribbean (In Progress), and Pacific Islands (In Progress)" style="width:100%;height:auto;display:block;" loading="lazy">
+    </div>
+
+    <div class="afg-grid afg-grid4 afg-mt24" aria-label="Regions">
+      <div class="afg-card">
+        <h3 style="margin:0 0 10px;font-weight:900;">Southeast Asia</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="afg-pill">Singapore</span><span class="afg-pill">Brunei</span><span class="afg-pill">Cambodia</span><span class="afg-pill">Indonesia</span><span class="afg-pill">Laos</span><span class="afg-pill">Malaysia</span><span class="afg-pill">Myanmar</span><span class="afg-pill">Philippines</span><span class="afg-pill">Thailand</span><span class="afg-pill">Vietnam</span><span class="afg-pill">Timor-Leste</span>
+        </div>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 10px;font-weight:900;">South Asia</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="afg-pill">Pakistan</span><span class="afg-pill">Sri Lanka</span><span class="afg-pill">Bangladesh</span>
+        </div>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 10px;font-weight:900;">Caribbean <span style="font-size:12px;color:var(--afg-muted);font-weight:800;">(In Progress)</span></h3>
+        <p class="afg-copy">In progress.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 10px;font-weight:900;">Pacific Islands <span style="font-size:12px;color:var(--afg-muted);font-weight:800;">(In Progress)</span></h3>
+        <p class="afg-copy">In progress.</p>
+      </div>
+    </div>
+
+    <div class="afg-grid afg-grid4 afg-mt24" aria-label="Impact stats">
+      <div class="afg-card afg-stat"><div class="afg-statN">11</div><div class="afg-statL">ASEAN Member States</div></div>
+      <div class="afg-card afg-stat"><div class="afg-statN">100K+</div><div class="afg-statL">Learners Reached</div></div>
+      <div class="afg-card afg-stat"><div class="afg-statN">200+</div><div class="afg-statL">Master Trainers</div></div>
+      <div class="afg-card afg-stat"><div class="afg-statN">6,000+</div><div class="afg-statL">Downstream Training</div></div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     OUR INITIATIVES (Kadence) — keep as provided
+     ============================================================ -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_01653b-ce","columns":1,"colLayout":"equal","bgColor":"palette9","firstColumnWidth":0,"secondColumnWidth":0,"thirdColumnWidth":0,"fourthColumnWidth":0,"fifthColumnWidth":0,"sixthColumnWidth":0,"inheritMaxWidth":true,"bgColorClass":"theme-palette9","padding":["xl","","sm",""],"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_ab9787-7a","kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_ab9787-7a"><div class="kt-inside-inner-col"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Our Initiatives</h2>
+<!-- /wp:heading -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_29f00f-57","columns":3,"tabletLayout":"last-row","collapseGutter":"wider","customRowGutter":[60,"",""],"customGutter":[32,"",""],"colLayout":"equal","columnsInnerHeight":true,"inheritMaxWidth":true,"padding":["lg","0","xxl","0"],"kbVersion":2} -->
+<!-- wp:kadence/column {"background":"palette9","borderWidth":["","","",""],"borderRadius":[20,20,20,20],"uniqueID":"17961_52483b-79","verticalAlignment":"top","padding":["lg","lg","lg","lg"],"mobilePadding":["sm","sm","sm","sm"],"borderStyle":[{"top":["palette2","",1],"right":["palette2","",1],"bottom":["palette2","",1],"left":["palette2","",1],"unit":"px"}],"kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_52483b-79"><div class="kt-inside-inner-col"><!-- wp:kadence/advancedheading {"level":3,"uniqueID":"17961_c23bd9-c3","align":"center","color":"palette3","fontWeight":"inherit","margin":["","","xs",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"textTransform":"capitalize","colorClass":"theme-palette3","fontSize":[20,"",""],"fontHeight":[1,"",""]} -->
+<h3 class="kt-adv-heading17961_c23bd9-c3 wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading17961_c23bd9-c3">AI Ready ASEAN</h3>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedheading {"uniqueID":"17961_680386-78","align":"center","color":"","margin":["xs","","",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"colorClass":"","htmlTag":"p","fontSize":["sm","",""]} -->
+<p class="kt-adv-heading17961_680386-78 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_680386-78">AI Singapore is the local implementing partner for the AI Ready ASEAN initiative, in partnership with the ASEAN Foundation and supported by Google.org. The initiative is committed to empowering ASEAN citizens to thrive in the era of AI. Running from 2024 to 2026, the programme will engage individuals in AI learning, cultivate Master Trainers, and establish a central e-learning platform, ensuring the region is equipped with the foundational knowledge of AI literacy, thereby helping ASEAN citizens navigate their future with confidence.</p>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedbtn {"hAlign":"left","uniqueID":"17961_5dc5cb-cf","margin":[{"desk":["ss-auto","","0",""],"tablet":["","","",""],"mobile":["","","",""]}]} -->
+<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns17961_5dc5cb-cf"><!-- wp:kadence/singlebtn {"uniqueID":"17961_6c1f09-1e","text":"Learn More","link":"https://aisingapore.org/talent/ai-ready-asean/","widthType":"full","tabletMargin":["","","","0"],"inheritStyles":"inherit"} /--></div>
+<!-- /wp:kadence/advancedbtn --></div></div>
+<!-- /wp:kadence/column -->
+
+<!-- wp:kadence/column {"background":"palette9","borderWidth":["","","",""],"borderRadius":[20,20,20,20],"uniqueID":"17961_707a7f-98","verticalAlignment":"top","padding":["lg","lg","lg","lg"],"mobilePadding":["sm","sm","sm","sm"],"borderStyle":[{"top":["palette2","",1],"right":["palette2","",1],"bottom":["palette2","",1],"left":["palette2","",1],"unit":"px"}],"kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_707a7f-98"><div class="kt-inside-inner-col"><!-- wp:kadence/advancedheading {"level":3,"uniqueID":"17961_eaf1f3-12","align":"center","color":"palette3","fontWeight":"inherit","margin":["","","xs",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"textTransform":"capitalize","colorClass":"theme-palette3","fontSize":[20,"",""],"fontHeight":[1,"",""]} -->
+<h3 class="kt-adv-heading17961_eaf1f3-12 wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading17961_eaf1f3-12">AI for Good (Educator) Train-the-Trainer Programme</h3>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedheading {"uniqueID":"17961_d0fcdf-db","align":"center","color":"","margin":["xs","","",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"colorClass":"","htmlTag":"p","fontSize":["sm","",""]} -->
+<p class="kt-adv-heading17961_d0fcdf-db wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_d0fcdf-db">The Al For Good (Educator) Train-the-Trainer Programme aims to #PLUSskill 100 educators from ASEAN and empower them to conduct 40 Al classes for 5,000 students in their home communities. We equip trainers to conduct their own workshops which touch on crucial topics such as Basic Al, Limitations of Al and Responsible Al Use.<a href="https://learn.aisingapore.org/ai-for-good-educator/"><br></a><br><br></p>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedbtn {"hAlign":"left","uniqueID":"17961_391656-f3","margin":[{"desk":["ss-auto","","0",""],"tablet":["","","",""],"mobile":["","","",""]}]} -->
+<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns17961_391656-f3"><!-- wp:kadence/singlebtn {"uniqueID":"17961_00796f-5e","text":"Learn More","link":"https://aisingapore.org/talent/ai-for-good-educator/","widthType":"full","tabletMargin":["","","","0"],"inheritStyles":"inherit"} /--></div>
+<!-- /wp:kadence/advancedbtn --></div></div>
+<!-- /wp:kadence/column -->
+
+<!-- wp:kadence/column {"background":"palette9","borderWidth":["","","",""],"borderRadius":[20,20,20,20],"uniqueID":"17961_7ebb40-05","verticalAlignment":"top","padding":["lg","lg","lg","lg"],"mobilePadding":["sm","sm","sm","sm"],"borderStyle":[{"top":["palette2","",1],"right":["palette2","",1],"bottom":["palette2","",1],"left":["palette2","",1],"unit":"px"}],"kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_7ebb40-05"><div class="kt-inside-inner-col"><!-- wp:kadence/advancedheading {"level":3,"uniqueID":"17961_5815cf-8f","align":"center","color":"","fontWeight":"inherit","margin":["","","xs",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"textTransform":"capitalize","colorClass":"","fontSize":[20,"",""],"fontHeight":[1,"",""]} -->
+<h3 class="kt-adv-heading17961_5815cf-8f wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_5815cf-8f">AI Opportunity Fund: Asia-Pacific</h3>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedheading {"uniqueID":"17961_26d586-50","color":"","margin":["xs","","",""],"markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"colorClass":"","htmlTag":"p","fontSize":["sm","",""]} -->
+<p class="kt-adv-heading17961_26d586-50 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_26d586-50">Al Singapore, as a Strategic Partner, develops, delivers, and manages the Train-the-Trainer programme with AVPN. </p>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedheading {"uniqueID":"17961_a74758-5a","markBorder":"","markBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"tabletMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"mobileMarkBorderStyles":[{"top":[null,"",""],"right":[null,"",""],"bottom":[null,"",""],"left":[null,"",""],"unit":"px"}],"htmlTag":"p","fontSize":["sm","",""]} -->
+<p class="kt-adv-heading17961_a74758-5a wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading17961_a74758-5a">AVPN, in collaboration with Google.org and Asian Development Bank (ADB), will support workers across Asia Pacific who are most impacted by workforce transitions that are driven by Al.<a href="https://aifundamentals.aisingapore.org/"><br></a><br></p>
+<!-- /wp:kadence/advancedheading -->
+
+<!-- wp:kadence/advancedbtn {"hAlign":"left","uniqueID":"17961_744cc5-4a","margin":[{"desk":["ss-auto","","0",""],"tablet":["","","",""],"mobile":["","","",""]}]} -->
+<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns17961_744cc5-4a"><!-- wp:kadence/singlebtn {"uniqueID":"17961_2539fb-86","text":"Learn More","link":"https://aifundamentals.aisingapore.org/","widthType":"full","tabletMargin":["","","","0"],"inheritStyles":"inherit"} /--></div>
+<!-- /wp:kadence/advancedbtn --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- ============================================================
+     PROGRAMME TABS (wp:html) — interactive, page-scoped
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" aria-labelledby="afg-programs" id="programs">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Our Programs</div>
+      <h2 class="afg-subhead" id="afg-programs">Programme Details</h2>
+      <p class="afg-copy afg-max780">A portfolio of programmes designed to scale inclusive AI education across Southeast Asia and beyond.</p>
+    </div>
+
+    <div class="afg-tabs" role="tablist" aria-label="AI for Good programmes">
+      <button class="afg-tabBtn" role="tab" aria-selected="true"  data-target="afg-panel-asean">AI Ready ASEAN</button>
+      <button class="afg-tabBtn" role="tab" aria-selected="false" data-target="afg-panel-aof">AI Opportunity Fund: APAC</button>
+      <button class="afg-tabBtn" role="tab" aria-selected="false" data-target="afg-panel-edu">AI for Good (Educators)</button>
+      <button class="afg-tabBtn" role="tab" aria-selected="false" data-target="afg-panel-youth">AI for Good (Youth)</button>
+    </div>
+
+    <div class="afg-panel isActive" id="afg-panel-asean" role="tabpanel">
+      <div class="afg-card afg-panelInner">
+        <div class="afg-panelGrid">
+          <div>
+            <h3 style="margin:0 0 6px;font-weight:900;font-size:22px;">AI Ready ASEAN</h3>
+            <p class="afg-copy" style="margin:0 0 16px;"><strong>Timeline:</strong> May 2025 – Sep 2026</p>
+            <div class="afg-hi"><div class="afg-hiN">1</div><p class="afg-copy">Reach 100,000+ youths, educators, parents, and underserved communities across Singapore and ASEAN</p></div>
+            <div class="afg-hi"><div class="afg-hiN">2</div><p class="afg-copy">Train 200 Master Trainers to scale AI education, reaching 6,000+ learners through downstream training</p></div>
+            <div class="afg-hi"><div class="afg-hiN">3</div><p class="afg-copy">Convene national policy dialogues on AI in Education and AI for Youth</p></div>
+            <div class="afg-hi"><div class="afg-hiN">4</div><p class="afg-copy">Deliver the AI Ready ASEAN Youth Challenge across all 11 ASEAN Member States</p></div>
+            <div class="afg-quote"><p>“The training was engaging and illuminating... realizing AI isn’t a distant concept, but something we can apply in everyday life.”</p></div>
+          </div>
+          <div>
+            <div class="afg-kv">
+              <p class="afg-kvT">Key Collaborators</p>
+              <div class="afg-pillRow">
+                <span class="afg-pill">ASEAN Foundation</span><span class="afg-pill">Google.org</span><span class="afg-pill">IMDA</span>
+              </div>
+            </div>
+            <div class="afg-kv afg-mt24">
+              <p class="afg-kvT">Target Countries</p>
+              <p class="afg-copy" style="margin:0;">11 ASEAN Member States</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="afg-panel" id="afg-panel-aof" role="tabpanel">
+      <div class="afg-card afg-panelInner">
+        <div class="afg-panelGrid">
+          <div>
+            <h3 style="margin:0 0 6px;font-weight:900;font-size:22px;">AI Opportunity Fund: APAC</h3>
+            <p class="afg-copy" style="margin:0 0 16px;"><strong>Timeline:</strong> May 2025 – Jun 2027</p>
+            <div class="afg-hi"><div class="afg-hiN">1</div><p class="afg-copy">Phase 1: Co-develop regional AI curriculum, enabling scalable AI literacy across diverse markets</p></div>
+            <div class="afg-hi"><div class="afg-hiN">2</div><p class="afg-copy">Develop AI training resources, toolkits, and structured learning pathways</p></div>
+            <div class="afg-hi"><div class="afg-hiN">3</div><p class="afg-copy">Train 50+ trainers across 5 countries to cascade AI literacy within their communities</p></div>
+            <div class="afg-hi"><div class="afg-hiN">4</div><p class="afg-copy">Phase 2: Reach 10,000+ PMETs, vocational, and university learners across 3 countries</p></div>
+            <div class="afg-quote"><p>“Clear programme design and excellent (and patient) facilitation... informative, organized, immersive and practical.”</p></div>
+          </div>
+          <div>
+            <div class="afg-kv">
+              <p class="afg-kvT">Key Collaborators</p>
+              <div class="afg-pillRow">
+                <span class="afg-pill">AVPN</span><span class="afg-pill">ADB</span><span class="afg-pill">Google.org</span>
+              </div>
+            </div>
+            <div class="afg-kv afg-mt24">
+              <p class="afg-kvT">Target Countries</p>
+              <p class="afg-copy" style="margin:0;">Singapore, Philippines, Pakistan, Sri Lanka, Bangladesh, Malaysia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="afg-panel" id="afg-panel-edu" role="tabpanel">
+      <div class="afg-card afg-panelInner">
+        <div class="afg-panelGrid">
+          <div>
+            <h3 style="margin:0 0 6px;font-weight:900;font-size:22px;">AI for Good (Educators)</h3>
+            <p class="afg-copy" style="margin:0 0 16px;"><strong>Timeline:</strong> Aug 2024 – Dec 2025</p>
+            <div class="afg-hi"><div class="afg-hiN">1</div><p class="afg-copy">Design and customise training curriculum for educators</p></div>
+            <div class="afg-hi"><div class="afg-hiN">2</div><p class="afg-copy">Conduct inbound Train-the-Trainers in Singapore for 100 educators across 3 countries</p></div>
+            <div class="afg-hi"><div class="afg-hiN">3</div><p class="afg-copy">Reach 10,000+ community members across respective countries</p></div>
+            <div class="afg-hi"><div class="afg-hiN">4</div><p class="afg-copy">Convene AI for Good (Educator) Conference in Malaysia</p></div>
+          </div>
+          <div>
+            <div class="afg-kv">
+              <p class="afg-kvT">Key Collaborators</p>
+              <div class="afg-pillRow">
+                <span class="afg-pill">Meta</span><span class="afg-pill">NAIO Malaysia</span>
+              </div>
+            </div>
+            <div class="afg-kv afg-mt24">
+              <p class="afg-kvT">Target Countries</p>
+              <p class="afg-copy" style="margin:0;">Malaysia, Thailand, Philippines</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="afg-panel" id="afg-panel-youth" role="tabpanel">
+      <div class="afg-card afg-panelInner">
+        <div class="afg-panelGrid">
+          <div>
+            <h3 style="margin:0 0 6px;font-weight:900;font-size:22px;">AI for Good (Youth)</h3>
+            <p class="afg-copy" style="margin:0 0 16px;"><strong>Timeline:</strong> Jan 2025 – Present</p>
+            <div class="afg-hi"><div class="afg-hiN">1</div><p class="afg-copy">Equip youth leaders with AI literacy and pedagogy to drive peer-led initiatives</p></div>
+            <div class="afg-hi"><div class="afg-hiN">2</div><p class="afg-copy">Expand access to AI learning in secondary schools through youth-led outreach</p></div>
+            <div class="afg-hi"><div class="afg-hiN">3</div><p class="afg-copy">Reach 2,000+ secondary school students across Singapore</p></div>
+            <div class="afg-quote"><p>“Hands-on activities made the programme fun and engaging... gave us confidence to use AI in real-world situations.”</p></div>
+          </div>
+          <div>
+            <div class="afg-kv">
+              <p class="afg-kvT">Key Collaborators</p>
+              <div class="afg-pillRow">
+                <span class="afg-pill">Singapore Youth AI</span><span class="afg-pill">National Youth Council</span>
+              </div>
+            </div>
+            <div class="afg-kv afg-mt24">
+              <p class="afg-kvT">Target Countries</p>
+              <p class="afg-copy" style="margin:0;">Singapore</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="afg-center afg-mt40">
+      <h3 style="margin:0 0 10px;font-weight:900;">In Progress</h3>
+      <p class="afg-copy afg-max780">Additional initiatives in development to extend AI literacy and impact to more communities and regions.</p>
+    </div>
+    <div class="afg-grid afg-grid3 afg-mt24">
+      <div class="afg-card" style="border-style:dashed;">
+        <div class="afg-badge" style="margin-bottom:10px;">Coming Soon</div>
+        <h4 style="margin:0 0 8px;font-weight:900;">AI for Good (Community)</h4>
+        <p class="afg-copy">A Train-the-Trainer programme for Social Service Agencies, enabling them to adapt AI literacy curricula for women, seniors, and underserved communities.</p>
+        <p class="afg-copy afg-mt24"><strong>Target:</strong> Singapore</p>
+      </div>
+      <div class="afg-card" style="border-style:dashed;">
+        <div class="afg-badge" style="margin-bottom:10px;">Coming Soon</div>
+        <h4 style="margin:0 0 8px;font-weight:900;">AI for Good Festival</h4>
+        <p class="afg-copy">A gamified AI literacy festival making AI accessible to students from all backgrounds, featuring interactive booths, workshops, and community showcases.</p>
+        <p class="afg-copy afg-mt24"><strong>Target:</strong> Singapore</p>
+      </div>
+      <div class="afg-card" style="border-style:dashed;">
+        <div class="afg-badge" style="margin-bottom:10px;">Coming Soon</div>
+        <h4 style="margin:0 0 8px;font-weight:900;">AI for Good (Global)</h4>
+        <p class="afg-copy">Partnering with UNDP to co-develop AI education initiatives that advance inclusive AI readiness and capacity-building across developing regions.</p>
+        <p class="afg-copy afg-mt24"><strong>Target:</strong> 2 ASEAN, 2 Caribbean, 2 Pacific Island countries</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     PARTNERS (wp:html) — complements Kadence content
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section" id="partners" aria-labelledby="afg-partners">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Our Partners</div>
+      <h2 class="afg-subhead" id="afg-partners">A Collaborative Ecosystem</h2>
+      <p class="afg-copy afg-max780">AI Singapore’s AI for Good initiatives are powered by a diverse, cross-sector ecosystem spanning public agencies, multilateral institutions, industry, philanthropy, and community partners.</p>
+    </div>
+
+    <div class="afg-card afg-mt40">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/colla%20white-KthkPr8nsctFttKcAODAeIAx7mfOwv.png" alt="AI for Good collaborative ecosystem showing partners radiating from the AI for Good logo" style="width:100%;height:auto;display:block;" loading="lazy">
+    </div>
+
+    <div class="afg-partners afg-mt24" aria-label="Partner list">
+      <div class="afg-partner"><div class="afg-initials">AF</div><p class="afg-partnerName">ASEAN Foundation</p></div>
+      <div class="afg-partner"><div class="afg-initials">GO</div><p class="afg-partnerName">Google.org</p></div>
+      <div class="afg-partner"><div class="afg-initials">IM</div><p class="afg-partnerName">IMDA</p></div>
+      <div class="afg-partner"><div class="afg-initials">AV</div><p class="afg-partnerName">AVPN</p></div>
+      <div class="afg-partner"><div class="afg-initials">AD</div><p class="afg-partnerName">ADB</p></div>
+      <div class="afg-partner"><div class="afg-initials">ME</div><p class="afg-partnerName">Meta</p></div>
+      <div class="afg-partner"><div class="afg-initials">MF</div><p class="afg-partnerName">Micron Foundation</p></div>
+      <div class="afg-partner"><div class="afg-initials">AW</div><p class="afg-partnerName">AWS</p></div>
+      <div class="afg-partner"><div class="afg-initials">UN</div><p class="afg-partnerName">UNDP</p></div>
+      <div class="afg-partner"><div class="afg-initials">SY</div><p class="afg-partnerName">Singapore Youth AI</p></div>
+      <div class="afg-partner"><div class="afg-initials">NY</div><p class="afg-partnerName">National Youth Council</p></div>
+      <div class="afg-partner"><div class="afg-initials">MU</div><p class="afg-partnerName">MUIS</p></div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     COLLABORATION (wp:html)
+     ============================================================ -->
+<!-- wp:html -->
+<section class="afg-section afg-soft" aria-labelledby="afg-collab">
+  <div class="afg-wrap">
+    <div class="afg-center">
+      <div class="afg-badge">Partner With Us</div>
+      <h2 class="afg-subhead" id="afg-collab">Strategic Collaboration Opportunities</h2>
+      <p class="afg-copy afg-max780">Join us in scaling inclusive AI education and creating lasting impact across Southeast Asia and beyond.</p>
+    </div>
+
+    <div class="afg-grid afg-grid3 afg-mt40">
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Strategic Investment</h3>
+        <p class="afg-copy">Catalyse high-impact AI for Good initiatives and unlock scalable models.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Expertise &amp; Thought Leadership</h3>
+        <p class="afg-copy">Advance domain-driven AI applications and co-create impactful solutions.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Ecosystem Access &amp; Partnerships</h3>
+        <p class="afg-copy">Activate networks to expand reach across communities and regions.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Policy &amp; Systems Influence</h3>
+        <p class="afg-copy">Shape responsible AI adoption and contribute to national and regional agendas.</p>
+      </div>
+      <div class="afg-card">
+        <h3 style="margin:0 0 8px;font-weight:900;">Scaling Impact</h3>
+        <p class="afg-copy">Translate proven initiatives into sustainable, system-level impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /wp:html -->
+
+<!-- ============================================================
+     CONTACT US (Kadence) — keep as provided
+     ============================================================ -->
+
+<!-- wp:kadence/rowlayout {"uniqueID":"17961_9a4257-f4","columns":1,"colLayout":"equal","maxWidth":1000,"kbVersion":2} -->
+<!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"17961_78adfc-e6","kbVersion":2} -->
+<div class="wp-block-kadence-column kadence-column17961_78adfc-e6"><div class="kt-inside-inner-col"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Contact Us</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">For further enquiries, please email <a href="mailto:learn-admin@aisingapore.org." target="_blank" rel="noreferrer noopener">learn-admin@aisingapore.org.</a></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:kadence/column -->
+<!-- /wp:kadence/rowlayout -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
