@@ -1,35 +1,67 @@
-# ai-for-good-website
+# AI for Good — website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Public-facing site for **AI for Good** under **AI Singapore**: scaling inclusive AI from Singapore into Southeast Asia and beyond. The experience is a single long-form page with anchored sections, scroll affordances, and a contact area.
 
-## Built with v0
+## What’s on the site
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+The home page (`app/page.tsx`) is built from focused sections:
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_M5xXAloeQmlsJEFjsNtv2XuHXQEI)
+- **Hero** — headline, typewriter-style emphasis, and impact stats (beneficiaries, ASEAN coverage, programmes, partners).
+- **AI era** — context on AI and society.
+- **Theory of change** — how interventions connect to outcomes.
+- **SDGs** — alignment with sustainable development goals.
+- **Global reach** — geographic and partnership footprint.
+- **Programmes** — active initiatives.
+- **Partners** — organisations involved.
+- **Collaboration** — how to work together.
+- **Contact** — ways to get in touch.
+- **Footer** — site-wide links and closing content.
 
-## Getting Started
+UI patterns include a top **navigation**, **section dot navigation**, **scroll progress**, **back to top**, light/dark theming via `next-themes`, and **Vercel Web Analytics** in the root layout.
 
-First, run the development server:
+## Tech stack
+
+- [Next.js](https://nextjs.org) (App Router) with React and TypeScript
+- [Tailwind CSS](https://tailwindcss.com) v4 for styling
+- [shadcn/ui](https://ui.shadcn.com)-style primitives under `components/ui`
+- [Lucide](https://lucide.dev) icons
+
+## WordPress theme
+
+A companion theme lives in `wordpress-theme/` for teams that publish the same story on WordPress (templates, assets, and block-oriented page content where noted).
+
+## Local development
+
+Install dependencies, then start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or with your preferred package manager (`pnpm dev`, `yarn dev`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) to preview the site.
 
-## Learn More
+**Production build:**
 
-To learn more, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## Project layout (high level)
 
-<a href="https://v0.app/chat/api/kiro/clone/doyelee0313/ai-for-good-website" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+| Path | Role |
+|------|------|
+| `app/` | Routes, layout, global styles |
+| `components/` | Page sections and shared UI |
+| `hooks/` | Scroll, motion, and interaction hooks |
+| `lib/` | Shared utilities |
+| `public/` | Static assets (logos, icons, imagery) |
+| `wordpress-theme/` | PHP theme for WordPress |
+
+## Learn more
+
+- [Next.js documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn) — guided tutorial
