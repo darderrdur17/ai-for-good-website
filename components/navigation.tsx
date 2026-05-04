@@ -11,6 +11,7 @@ const navItems = [
   { name: "Impact", href: "#impact" },
   { name: "Programmes", href: "#programs" },
   { name: "Partners", href: "#partners" },
+  { name: "Gallery", href: "#gallery" },
   { name: "Contact", href: "#contact" },
 ];
 

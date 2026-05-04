@@ -10,6 +10,7 @@ import { SDGSection } from "@/components/sdg-section";
 import { GlobalReachSection } from "@/components/global-reach-section";
 import { ProgramsSection } from "@/components/programs-section";
 import { PartnersSection } from "@/components/partners-section";
+import { GallerySection } from "@/components/gallery-section";
 import { CollaborationSection } from "@/components/collaboration-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -53,6 +54,7 @@ export default function AIForGoodPage() {
         <GlobalReachSection />
         <ProgramsSection />
         <PartnersSection />
+        <GallerySection />
         <CollaborationSection />
         <ContactSection />
         <Footer />

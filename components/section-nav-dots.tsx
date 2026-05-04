@@ -8,6 +8,7 @@ const sections = [
   { id: "impact", label: "Global Reach" },
   { id: "programs", label: "Programmes" },
   { id: "partners", label: "Partners" },
+  { id: "gallery", label: "Gallery" },
   { id: "contact", label: "Contact" },
 ];
 
