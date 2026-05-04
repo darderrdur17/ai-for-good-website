@@ -16,24 +16,7 @@ export function GallerySection() {
             Gallery
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Highlights from outreach, trainings, festivals, and partnership moments. Add or reorder
-            photos in{" "}
-            <code className="text-sm bg-muted px-1.5 py-0.5 rounded-md border border-border">
-              lib/gallery-items.ts
-            </code>
-            ; put assets in{" "}
-            <code className="text-sm bg-muted px-1.5 py-0.5 rounded-md border border-border">
-              public/
-            </code>{" "}
-            and set each tile&apos;s{" "}
-            <code className="text-sm bg-muted px-1.5 py-0.5 rounded-md border border-border">
-              layout
-            </code>{" "}
-            (e.g.{" "}
-            <code className="text-sm bg-muted px-1.5 py-0.5 rounded-md border border-border">
-              lg:col-span-6
-            </code>{" "}
-            for half-width).
+            Highlights from outreach, trainings, festivals, and partnership moments.
           </p>
         </div>
 
