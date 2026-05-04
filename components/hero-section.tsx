@@ -8,8 +8,6 @@ import { AnimatedStat } from "@/components/animated-stat";
 const stats = [
   { value: "100K+", label: "Beneficiaries Reached" },
   { value: "11", label: "ASEAN Member States" },
-  { value: "5+", label: "Active Programmes" },
-  { value: "15+", label: "Partner Organisations" },
 ];
 
 // Deterministic particle positions (avoids hydration mismatch)
@@ -150,7 +148,7 @@ export function HeroSection() {
 
         {/* Animated stats */}
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto animate-fade-in-up"
+          className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-xl mx-auto animate-fade-in-up [&>*]:flex-1 [&>*]:min-w-[140px] sm:[&>*]:min-w-[160px]"
           style={{ animationDelay: "0.75s" }}
         >
           {stats.map((stat) => (

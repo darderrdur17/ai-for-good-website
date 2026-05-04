@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
 
 const regions = [
@@ -9,33 +9,19 @@ const regions = [
       "Singapore", "Brunei", "Cambodia", "Indonesia", "Laos",
       "Malaysia", "Myanmar", "Philippines", "Thailand", "Vietnam", "Timor-Leste",
     ],
-    status: "active",
     label: "Active",
   },
   {
     name: "South Asia",
     countries: ["Pakistan", "Sri Lanka", "Bangladesh"],
-    status: "active",
     label: "Active",
-  },
-  {
-    name: "Caribbean",
-    countries: ["Coming Soon"],
-    status: "in-progress",
-    label: "In Progress",
-  },
-  {
-    name: "Pacific Islands",
-    countries: ["Coming Soon"],
-    status: "in-progress",
-    label: "In Progress",
   },
 ];
 
 const stats = [
   { value: "11", label: "ASEAN Member States", delay: "1" },
   { value: "100K+", label: "Beneficiaries Reached", delay: "2" },
-  { value: "4", label: "Regions Engaged", delay: "3" },
+  { value: "2", label: "Regions Engaged", delay: "3" },
   { value: "3+", label: "Countries in South Asia", delay: "4" },
 ];
 
@@ -62,7 +48,7 @@ export function GlobalReachSection() {
           <div className="relative w-full aspect-[2/1] min-h-[280px]">
             <Image
               src="/map global.png"
-              alt="World map showing AI for Good global reach across Southeast Asia, South Asia, Caribbean, and Pacific Islands"
+              alt="World map showing AI for Good global reach across Southeast Asia and South Asia"
               fill
               className="object-contain p-4 sm:p-8"
               priority
@@ -71,59 +57,41 @@ export function GlobalReachSection() {
         </div>
 
         {/* Region Details */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+        <div className="grid sm:grid-cols-2 gap-5 mb-12 max-w-4xl mx-auto">
           {regions.map((region, i) => (
             <div
               key={region.name}
-              className={`p-5 rounded-2xl border h-full reveal ${
-                region.status === "active"
-                  ? "bg-primary/8 border-primary/25 hover:border-primary/50"
-                  : "bg-secondary/40 border-border border-dashed"
-              } transition-all duration-300`}
+              className="p-5 sm:p-6 rounded-2xl border border-primary/25 bg-primary/8 h-full reveal hover:border-primary/50 transition-all duration-300"
               data-delay={String(i + 1)}
             >
-              <div className="flex items-center gap-2 mb-3">
-                {region.status === "active" ? (
-                  <MapPin className="w-4 h-4 text-primary shrink-0" />
-                ) : (
-                  <Clock className="w-4 h-4 text-muted-foreground shrink-0" />
-                )}
-                <h3 className="font-semibold text-sm text-foreground">
-                  {region.name}
-                </h3>
-                <span
-                  className={`ml-auto text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
-                    region.status === "active"
-                      ? "bg-primary/20 text-primary"
-                      : "bg-muted text-muted-foreground"
-                  }`}
-                >
+              <div className="flex items-start justify-between gap-3 mb-4">
+                <div className="flex items-center gap-2 min-w-0">
+                  <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                  <h3 className="font-semibold text-base text-foreground leading-tight">
+                    {region.name}
+                  </h3>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 bg-primary/20 text-primary">
                   {region.label}
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-1.5">
-                {region.countries
-                  .filter((c) => c !== "In Progress")
-                  .map((country) => (
-                    <span
-                      key={country}
-                      className={`text-xs px-2 py-0.5 rounded-full ${
-                        region.status === "active"
-                          ? "bg-primary/15 text-primary"
-                          : "bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      {country}
-                    </span>
-                  ))}
+                {region.countries.map((country) => (
+                  <span
+                    key={country}
+                    className="text-xs px-2 py-0.5 rounded-full bg-primary/15 text-primary"
+                  >
+                    {country}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Impact Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        {/* Impact Stats — aligned width with region cards above */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
           {stats.map((stat) => (
             <div
               key={stat.label}
